@@ -1,0 +1,247 @@
+body {
+  background-color: antiquewhite;
+}
+
+.header-div {
+  background-color: #4a2074;
+  font-family: "Berkshire Swash", sans-serif;
+  color: white;
+  height: 5rem;
+  width: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.standard-header {
+  margin-top: 0;
+  padding-top: 0.5rem;
+}
+
+.deck-view-button {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.deck-view-button:hover {
+  transform: scale(1.1);
+}
+
+/* Set View CSS */
+
+.set-container {
+  background-color: #353131;
+  width: 100%;
+  padding-bottom: 2rem;
+  min-height: 100%;
+}
+
+.set {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.9rem;
+}
+
+.set-symbol-div {
+  background-color: white;
+  width: 4rem;
+  height: 3rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.set-symbol {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.set-name {
+  font-family: Montserrat, sans-serif;
+  background-color: #676161;
+  color: white;
+  font-size: 1.3em;
+  height: 3.2rem;
+  width: 20rem;
+  padding-top: 0.7rem;
+  text-align: center;
+  border-radius: 0.5em;
+  transition: 1s ease;
+  cursor: pointer;
+}
+
+.set-name:hover {
+  background-color: #5c2292;
+}
+
+/* full screen css */
+
+@media screen and (width > 1000px) {
+  body {
+    background-image:
+      linear-gradient(to bottom, rgba(245, 246, 252, 0.066), rgba(164, 15, 127, 0.73)),
+      url("/images/Macabre-Waltz-Shadows-over-Innistrad-Artwork.jpeg"),
+      linear-gradient(to top, rgba(245, 246, 252, 0), rgba(233, 237, 23, 0.507)),
+      url("/images/embargo-july-21-at-330pmpt-dominaria-united-asset-1658347859938.jpg");
+    background-repeat: no-repeat;
+    background-size:
+      80%,
+      75% auto,
+      100%,
+      95% auto;
+    background-position:
+      -100% 10%,
+      -60% 80%,
+      100% 100%,
+      650% 100%;
+    background-attachment: fixed;
+  }
+
+  .header-div {
+    width: 100%;
+  }
+
+  .container {
+    width: 650px;
+    height: auto;
+  }
+
+  .deck-view-button {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+  }
+
+  .set {
+    display: flex;
+    justify-content: center;
+    padding-top: 3.3rem;
+  }
+}
+
+/* CSS for Card view */
+
+.card-view-container {
+  min-height: auto;
+  width: 100%;
+  background-color: #353131;
+  display: flex;
+  justify-content: center;
+}
+
+.card-view-set-name-div {
+  height: 1.8rem;
+  background-color: #6c587f;
+  color: white;
+  font-family: lato, sans-serif;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-view-set-name-div > h3 {
+  margin-top: 0.2rem;
+}
+
+/* color filters */
+
+.color-filters {
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 100%;
+}
+
+[type="radio"] + img {
+  transform: scale(0.2);
+  margin-top: -5.8rem;
+  margin-left: -5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+[type="radio"] + img:hover {
+  transform: scale(0.17);
+}
+
+[type="radio"]:checked + img {
+  outline: 8px solid rgb(185, 22, 17);
+}
+
+[type="radio"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+label {
+  width: 43px;
+  height: 40px;
+}
+
+.card-grid {
+  padding: 0 2.5%;
+  padding-bottom: 1rem;
+  margin: 1rem 0.1rem;
+  max-width: 1200px;
+}
+
+.card-grid-inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-grid-item {
+  display: block;
+  position: relative;
+  width: 49.5%;
+  margin: 0 0 8px 2px;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+
+.card-grid-item:hover {
+  transform: scale(0.98);
+}
+
+@media screen and (width > 650px) {
+  .row > .column-third {
+    flex-basis: calc(99%/3);
+  }
+
+  .card-grid-item {
+    width: calc(98%/3);
+  }
+}
+
+@media screen and (width > 750px) {
+  .row > .column-quarter {
+    flex-basis: calc(99%/4);
+  }
+
+  .card-grid-item {
+    width: calc(99%/4);
+  }
+}
+
+.sets-return-div {
+  margin: 20px -60px;
+  padding-right: 90px;
+}
+
+.sets-return {
+  width: 60px;
+  height: 30px;
+  font-family: "lilita one", sans-serif;
+  background-color: #dec9f3;
+  border-radius: 10px;
+  cursor: pointer;
+}

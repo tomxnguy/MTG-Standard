@@ -8,12 +8,93 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lato:wght@300&family=Lemon&family=Lilita+One&family=Montserrat:wght@200&display=swap"
+    rel="stylesheet">
 </head>
 <body>
   <header>
+    <div class="header-div">
+      <div class="sets-return-div"><button class="sets-return hidden">Sets</button></div>
+      <h1 class="standard-header">MTG Standard</h1>
+    </div>
+    <div class="deck-view-button-div">
+      <img class="deck-view-button" src="/images/Component 1.png" alt="deck-view">
+    </div>
   </header>
   <main>
+    <div class="container">
+      <div class="set-container set-view">
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/MOM.png" alt="mom"></div>
+          <a class="set-name" id="mom-set">March of the Machine</a>
+        </div>
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/ONE.png" alt="one"></div>
+          <a class="set-name" id="one-set">Phyrexia: All Will be One</a>
+        </div>
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/BRO.png" alt="bro"></div>
+          <a class="set-name" id="bro-set">The Brothers' War</a>
+        </div>
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/DOM.png" alt="dom"></div>
+          <a class="set-name" id="dom-set">Dominaria United</a>
+        </div>
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/SNC.png" alt="snc"></div>
+          <a class="set-name" id="snc-set">Streets of New Capenna</a>
+        </div>
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/NEO.png" alt="neo"></div>
+          <a class="set-name" id="neo-set">Kamigawa: Neon Dynasty</a>
+        </div>
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/VOW.png" alt="vow"></div>
+          <a class="set-name" id="vow-set">Innistrad: Crimson Vow</a>
+        </div>
+        <div class="set row">
+          <div class="set-symbol-div"><img class="set-symbol" src="/images/MID.png" alt="mid"></div>
+          <a class="set-name" id="mid-set">Innistrad: Midnight Hunt</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-view-container card-view hidden row">
+      <div class="card-view-set-name-div row">
+        <h3 class="set-header">Placeholder Set Name</h3>
+      </div>
+      <div class="color-filters row">
+        <label>
+          <input type="radio" name="color" value="w">
+          <img src="/images/W.png" alt="Option 1">
+        </label>
+        <label>
+          <input type="radio" name="color" value="u">
+          <img src="/images/U.png" alt="Option 2">
+        </label>
+        <label>
+          <input type="radio" name="color" value="b">
+          <img src="/images/B.png" alt="Option 3">
+        </label>
+        <label>
+          <input type="radio" name="color" value="r">
+          <img src="/images/R.png" alt="Option 4">
+        </label>
+        <label>
+          <input type="radio" name="color" value="g">
+          <img src="/images/G.png" alt="Option 5">
+        </label>
+      </div>
+      <div class="card-grid">
+        <div class="card-grid-inner">
+        </div>
+      </div>
+    </div>
+
   </main>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
