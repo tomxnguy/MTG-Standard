@@ -1,0 +1,18 @@
+.hidden {
+  display: none !important;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column-full,
+.column-half {
+  width: 100%;
+}
