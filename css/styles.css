@@ -212,19 +212,19 @@ label {
   transform: scale(0.98);
 }
 
-@media screen and (width > 650px) {
+@media screen and (width >= 650px) {
   .row > .column-third {
-    flex-basis: calc(99%/3);
+    flex-basis: calc(100%/3);
   }
 
   .card-grid-item {
-    width: calc(98%/3);
+    width: calc(99%/3);
   }
 }
 
-@media screen and (width > 750px) {
+@media screen and (width >= 750px) {
   .row > .column-quarter {
-    flex-basis: calc(99%/4);
+    flex-basis: calc(100%/4);
   }
 
   .card-grid-item {

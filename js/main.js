@@ -83,7 +83,7 @@ $neoSet.addEventListener('click', function () {
 
 $vowSet.addEventListener('click', function () {
   cardView();
-  $setHeader.textContent = 'Innistrad: Crimson Vow<';
+  $setHeader.textContent = 'Innistrad: Crimson Vow';
   networkRequest('set=vow');
 });
 
