@@ -27,8 +27,9 @@ function setView() {
   $setsReturn.className = 'hidden';
 }
 
+const originalUrl = 'https://api.magicthegathering.io/v1/cards?';
+
 function networkRequest(endOfUrl) {
-  const originalUrl = 'https://api.magicthegathering.io/v1/cards?';
   const xhr = new XMLHttpRequest();
   xhr.open('GET', originalUrl + endOfUrl);
   xhr.responseType = 'json';
@@ -48,47 +49,79 @@ function networkRequest(endOfUrl) {
 $momSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'March of the Machine';
-  networkRequest('set=mom');
+  const momUrl = 'set=mom';
+  networkRequest(momUrl);
 });
 
 $oneSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Phyrexia: All Will Be One';
-  networkRequest('set=one');
+  const oneUrl = 'set=one';
+  networkRequest(oneUrl);
 });
 
 $broSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = "The Brothers' War";
-  networkRequest('set=bro');
+  const brUrl = 'set=bro';
+  networkRequest(brUrl);
 });
 
 $domSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Dominaria United';
-  networkRequest('set=dom');
+  const domUrl = 'set=dom';
+  networkRequest(domUrl);
 });
 
 $sncSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Streets of New Capenna';
-  networkRequest('set=snc');
+  const sncUrl = 'set=snc';
+  networkRequest(sncUrl);
 });
 
 $neoSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Kamigawa: Neon Dynasty';
-  networkRequest('set=neo');
+  const neoUrl = 'set=neo';
+  networkRequest(neoUrl);
 });
 
 $vowSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Innistrad: Crimson Vow';
-  networkRequest('set=vow');
+  const midUrl = 'set=vow';
+  networkRequest(midUrl);
 });
 
 $midSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Innistrad: Midnight Hunt';
-  networkRequest('set=mid');
+  const url = 'set=mid';
+  networkRequest(url);
 });
+
+const $whiteRadio = document.querySelector('.white');
+const $blueRadio = document.querySelector('.blue');
+const $blackRadio = document.querySelector('.black');
+const $redRadio = document.querySelector('.red');
+const $greenRadio = document.querySelector('.green');
+
+const $colorForm = document.querySelectorAll('input[type=radio]');
+
+$colorForm.addEventListener('change', changeColor);
+
+function changeColor(url) {
+  if ($whiteRadio.value === 'checked') {
+    networkRequest(originalUrl + url + '&colors=w');
+  } else if ($blueRadio.value === 'checked') {
+    networkRequest(originalUrl + url + '&colors=u');
+  } else if ($blackRadio.value === 'checked') {
+    networkRequest(originalUrl + url + '&colors=b');
+  } else if ($redRadio.value === 'checked') {
+    networkRequest(originalUrl + url + '&colors=r');
+  } else if ($greenRadio.value === 'checked') {
+    networkRequest(originalUrl + url + '&colors=g');
+  }
+}

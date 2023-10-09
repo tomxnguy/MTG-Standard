@@ -160,14 +160,13 @@ body {
 
 [type="radio"] + img {
   transform: scale(0.2);
-  margin-top: -5.8rem;
-  margin-left: -5rem;
+  margin: -4.3rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 [type="radio"] + img:hover {
-  transform: scale(0.17);
+  transform: scale(0.25);
 }
 
 [type="radio"]:checked + img {
