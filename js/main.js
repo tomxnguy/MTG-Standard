@@ -10,7 +10,8 @@ const $setView = document.querySelector('.set-view');
 const $cardView = document.querySelector('.card-view');
 const $setsReturn = document.querySelector('.sets-return');
 const $setHeader = document.querySelector('.set-header');
-const $cardGridInner = document.querySelector('.card-grid-inner');
+let $cardGridInner = document.querySelector('.card-grid-inner');
+const $cardGrid = document.querySelector('.card-grid');
 
 function cardView() {
   $setView.className = 'hidden';
@@ -28,12 +29,18 @@ function setView() {
 }
 
 const originalUrl = 'https://api.magicthegathering.io/v1/cards?';
-
+let url = '';
 function networkRequest(endOfUrl) {
+  url = endOfUrl;
   const xhr = new XMLHttpRequest();
   xhr.open('GET', originalUrl + endOfUrl);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
+    $cardGridInner.remove();
+    const $newCardGridInner = document.createElement('div');
+    $newCardGridInner.setAttribute('class', 'card-grid-inner');
+    $cardGrid.appendChild($newCardGridInner);
+    $cardGridInner = document.querySelector('.card-grid-inner');
     for (let i = 0; i < xhr.response.cards.length; i++) {
       if (xhr.response.cards[i].imageUrl) {
         const $cardItem = document.createElement('img');
@@ -91,15 +98,15 @@ $neoSet.addEventListener('click', function () {
 $vowSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Innistrad: Crimson Vow';
-  const midUrl = 'set=vow';
-  networkRequest(midUrl);
+  const vowUrl = 'set=vow';
+  networkRequest(vowUrl);
 });
 
 $midSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Innistrad: Midnight Hunt';
-  const url = 'set=mid';
-  networkRequest(url);
+  const midUrl = 'set=mid';
+  networkRequest(midUrl);
 });
 
 const $whiteRadio = document.querySelector('.white');
@@ -110,18 +117,22 @@ const $greenRadio = document.querySelector('.green');
 
 const $colorForm = document.querySelectorAll('input[type=radio]');
 
-$colorForm.addEventListener('change', changeColor);
+$colorForm.forEach(input => {
+  input.addEventListener('change', () => {
+    changeColor(url);
+  });
+});
 
 function changeColor(url) {
-  if ($whiteRadio.value === 'checked') {
-    networkRequest(originalUrl + url + '&colors=w');
-  } else if ($blueRadio.value === 'checked') {
-    networkRequest(originalUrl + url + '&colors=u');
-  } else if ($blackRadio.value === 'checked') {
-    networkRequest(originalUrl + url + '&colors=b');
-  } else if ($redRadio.value === 'checked') {
-    networkRequest(originalUrl + url + '&colors=r');
-  } else if ($greenRadio.value === 'checked') {
-    networkRequest(originalUrl + url + '&colors=g');
+  if ($whiteRadio.checked) {
+    networkRequest(url + '&colors=w');
+  } else if ($blueRadio.checked) {
+    networkRequest(url + '&colors=u');
+  } else if ($blackRadio.checked) {
+    networkRequest(url + '&colors=b');
+  } else if ($redRadio.checked) {
+    networkRequest(url + '&colors=r');
+  } else if ($greenRadio.checked) {
+    networkRequest(url + '&colors=g');
   }
 }
