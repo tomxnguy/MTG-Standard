@@ -10,7 +10,8 @@ const $setView = document.querySelector('.set-view');
 const $cardView = document.querySelector('.card-view');
 const $setsReturn = document.querySelector('.sets-return');
 const $setHeader = document.querySelector('.set-header');
-const $cardGridInner = document.querySelector('.card-grid-inner');
+let $cardGridInner = document.querySelector('.card-grid-inner');
+const $cardGrid = document.querySelector('.card-grid');
 
 function cardView() {
   $setView.className = 'hidden';
@@ -27,12 +28,19 @@ function setView() {
   $setsReturn.className = 'hidden';
 }
 
+const originalUrl = 'https://api.magicthegathering.io/v1/cards?';
+let url = '';
 function networkRequest(endOfUrl) {
-  const originalUrl = 'https://api.magicthegathering.io/v1/cards?';
+  url = endOfUrl;
   const xhr = new XMLHttpRequest();
   xhr.open('GET', originalUrl + endOfUrl);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
+    $cardGridInner.remove();
+    const $newCardGridInner = document.createElement('div');
+    $newCardGridInner.setAttribute('class', 'card-grid-inner');
+    $cardGrid.appendChild($newCardGridInner);
+    $cardGridInner = document.querySelector('.card-grid-inner');
     for (let i = 0; i < xhr.response.cards.length; i++) {
       if (xhr.response.cards[i].imageUrl) {
         const $cardItem = document.createElement('img');
@@ -48,47 +56,83 @@ function networkRequest(endOfUrl) {
 $momSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'March of the Machine';
-  networkRequest('set=mom');
+  const momUrl = 'set=mom';
+  networkRequest(momUrl);
 });
 
 $oneSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Phyrexia: All Will Be One';
-  networkRequest('set=one');
+  const oneUrl = 'set=one';
+  networkRequest(oneUrl);
 });
 
 $broSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = "The Brothers' War";
-  networkRequest('set=bro');
+  const brUrl = 'set=bro';
+  networkRequest(brUrl);
 });
 
 $domSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Dominaria United';
-  networkRequest('set=dom');
+  const domUrl = 'set=dom';
+  networkRequest(domUrl);
 });
 
 $sncSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Streets of New Capenna';
-  networkRequest('set=snc');
+  const sncUrl = 'set=snc';
+  networkRequest(sncUrl);
 });
 
 $neoSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Kamigawa: Neon Dynasty';
-  networkRequest('set=neo');
+  const neoUrl = 'set=neo';
+  networkRequest(neoUrl);
 });
 
 $vowSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Innistrad: Crimson Vow';
-  networkRequest('set=vow');
+  const vowUrl = 'set=vow';
+  networkRequest(vowUrl);
 });
 
 $midSet.addEventListener('click', function () {
   cardView();
   $setHeader.textContent = 'Innistrad: Midnight Hunt';
-  networkRequest('set=mid');
+  const midUrl = 'set=mid';
+  networkRequest(midUrl);
 });
+
+const $whiteRadio = document.querySelector('.white');
+const $blueRadio = document.querySelector('.blue');
+const $blackRadio = document.querySelector('.black');
+const $redRadio = document.querySelector('.red');
+const $greenRadio = document.querySelector('.green');
+
+const $colorForm = document.querySelectorAll('input[type=radio]');
+
+$colorForm.forEach(input => {
+  input.addEventListener('change', () => {
+    changeColor(url);
+  });
+});
+
+function changeColor(url) {
+  if ($whiteRadio.checked) {
+    networkRequest(url + '&colors=w');
+  } else if ($blueRadio.checked) {
+    networkRequest(url + '&colors=u');
+  } else if ($blackRadio.checked) {
+    networkRequest(url + '&colors=b');
+  } else if ($redRadio.checked) {
+    networkRequest(url + '&colors=r');
+  } else if ($greenRadio.checked) {
+    networkRequest(url + '&colors=g');
+  }
+}
